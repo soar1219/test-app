@@ -6,15 +6,18 @@ import { UserManegement } from "../components/pages/UserManegement";
 import { Setting } from "../components/pages/Setting";
 import { Page404 } from "../components/pages/Page404";
 import { HeaderLayout } from "../components/templates/HeaderLayout";
+import { LoginUserProvider } from "../providers/LoginUserProvider";
 
 export const Root: FC = memo(() => {
     return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<HeaderLayout><Home /></HeaderLayout>} />
-            <Route path="/home/user-manegemant" element={<HeaderLayout><UserManegement /></HeaderLayout>} />
-            <Route path="/setting" element={<Setting />} />
-            <Route path='/*' element={<Page404/>} />
-        </Routes>
+            <LoginUserProvider>
+                <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/home" element={<HeaderLayout><Home /></HeaderLayout>} />
+                        <Route path="/home/user-manegemant" element={<HeaderLayout><UserManegement /></HeaderLayout>} />
+                        <Route path="/setting" element={<Setting />} />
+                        <Route path='/*' element={<Page404/>} />
+                </Routes>
+            </LoginUserProvider>
     )
 }) 
